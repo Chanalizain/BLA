@@ -46,7 +46,7 @@ class LocationRepositoryMock extends LocationRepository {
   Location(name: "Brest", country: Country.france),
 ];
   @override
-  Future<List<Location>> getLocation() async {
+  Future<List<Location>> getLocations() async {
     // TODO: implement getLocation
     await Future.delayed(const Duration(microseconds: 500));
     return locations;
