@@ -1,7 +1,8 @@
+import 'package:blabla/ui/screens/home/view_model/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../model/ride_pref/ride_pref.dart';
-import '../../../../utils/date_time_utils.dart';
 import '../../../theme/theme.dart';
 
 class HomeHistoryTile extends StatelessWidget {
@@ -10,20 +11,18 @@ class HomeHistoryTile extends StatelessWidget {
   final RidePreference ridePref;
   final VoidCallback? onPressed;
 
-  String get title => "${ridePref.departure.name} → ${ridePref.arrival.name}";
-
-  String get subtitle =>
-      "${DateTimeUtils.formatDateTime(ridePref.departureDate)}, ${ridePref.requestedSeats} passenger${ridePref.requestedSeats > 1 ? "s" : ""}";
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<HomeViewModel>();
     return ListTile(
       onTap: onPressed,
       leading: Icon(Icons.history, color: BlaColors.iconLight),
 
-      title: Text(title, style: BlaTextStyles.body),
+      title: Text(
+        viewModel.getHistoryTitle(ridePref), style: BlaTextStyles.body),
       subtitle: Text(
-        subtitle,
+        viewModel.getHistorySubtitle(ridePref),
         style: BlaTextStyles.label.copyWith(color: BlaColors.textLight),
       ),
 
