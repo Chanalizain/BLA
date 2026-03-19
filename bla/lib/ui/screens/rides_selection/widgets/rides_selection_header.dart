@@ -25,12 +25,13 @@ class RideSelectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: BlaColors.backgroundAccent,
-        borderRadius:
-            BorderRadius.circular(BlaSpacings.radius), // Rounded corners
+        borderRadius: BorderRadius.circular(
+          BlaSpacings.radius,
+        ), // Rounded corners
       ),
       child: Row(
         children: [
@@ -56,7 +57,7 @@ class RideSelectionHeader extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: BlaTextButton(text: "Filter", onPressed: onFilterPressed),
-          )
+          ),
         ],
       ),
     );
