@@ -25,6 +25,20 @@ class RidePreference {
         'requestedSeats: $requestedSeats)';
   }
 
+  RidePreference copyWith({
+    Location? departure,
+    Location? arrival,
+    DateTime? departureDate,
+    int? requestedSeats,
+  }) {
+    return RidePreference(
+      departure: departure ?? this.departure,
+      arrival: arrival ?? this.arrival,
+      departureDate: departureDate ?? this.departureDate,
+      requestedSeats: requestedSeats ?? this.requestedSeats,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
