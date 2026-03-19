@@ -8,7 +8,18 @@ import '../../../../utils/date_time_utils.dart';
 class HomeViewModel extends ChangeNotifier {
   final RidePreferenceState ridePreferenceState;
 
-  HomeViewModel({required this.ridePreferenceState});
+  HomeViewModel({required this.ridePreferenceState}){
+    ridePreferenceState.addListener(_onStateChanged);
+  }
+
+  void _onStateChanged() => notifyListeners();
+
+  @override
+  void dispose() {
+    // Always remove listeners when the VM is destroyed to prevent memory leaks
+    ridePreferenceState.removeListener(_onStateChanged);
+    super.dispose();
+  }
 
   // Getters for the UI
   RidePreference? get currentPreference =>
